@@ -1,53 +1,45 @@
+/* 4c3. Apply styles to the site using the images under the "Deliverable" section below as a reference for font sizes, colors, layout, etc.
+  4c3a) Hint: to align all the content to the center at once (including the card images!), try applying the text-align property to the body element, like so:
+      body {
+          text-align: center;
+      }
+*/
 body {
   text-align: center;
+
+  /* 4c3f - Implicit */
+  text-transform: uppercase;
+
+/* 5d) Adjust the spacing around elements using padding and margin to give the layout some breathing room.
+  5d1. Some browsers give the body a margin by default, which will create a bit of space around the edges of the page. We want to remove this margin since we want our header background to touch the edges of the browser window. Apply the following style to the body selector in your style.css file to remove this margin: margin: 0;. */
   margin: 0;
 }
 
-header {
-  background-color: #F15B31;
-  padding: 30px 20px;
-}
-
+/* 4c3b */
 h1 {
   font-family: Raleway;
   color: #0D2C40;
   letter-spacing: 1px;
   font-weight: 400;
   font-size: 45px;
+
+  /* 5d2. Now find the styles you are applying to the h1. We also want to remove the margin from the h1 so that our header takes up a little less space. Set the margin for the h1 to 0. */
   margin: 0;
 }
 
-main {
-  width: 850px;
-  margin: 35px auto;
-}
-
-nav {
-  background-color: #00A6B3;
-  padding: 20px 0;
-}
-
+/* 4c3c */
 a {
   font-family: Raleway;
   color: #F15B31;
   letter-spacing: 1px;
   font-weight: 600;
   font-size: 18px;
-  margin: 0 20px;
 
-  /* Implicit Requirement in Unit 4 */
+  /* 4c3f - Implicit */
   text-decoration: none;
-
-  border-bottom: 2px solid transparent;
 }
 
-a:hover {
-  border-bottom: white;
-
-  /* Implicit Requirement in Unit 5 */
-  text-decoration: underline;
-}
-
+/* 4c3d */
 h2 {
   font-family: Raleway;
   color: #0D2C40;
@@ -56,26 +48,61 @@ h2 {
   font-size: 20px;
 }
 
-/* Implicit Requirement in Unit 5 */
-h1, a {
+/* 4c3e */
+p {
+  font-family: "Droid Serif";
+  line-height: 26px;
+  font-size: 18px;
+
+  /* 4c3f - Implicit */
+  text-transform: none;
+}
+
+/* 5b) Give the header and nav a background-color to make them stand out.
+  5b1. Select the header element in your CSS and give it a background-color of #F15B31, 30px padding on the top and bottom, and 20px padding on the right and left. */
+header {
+  background-color: #F15B31;
+  padding: 30px 20px;
+}
+
+  /* 5b2. Now let's add some styles to the nav. Give the nav element a background-color of #00A6B3 and 20px padding on the top and bottom. */
+nav {
+  background-color: #00A6B3;
+  padding: 20px 0;
+}
+
+  /* 5d3. The anchors in our nav are a little too close together! Give the a elements 20px margin on the right and left sides. */
+nav a {
+  margin: 0 20px;
+}
+
+/* 5c) Center the main content on the page.
+Now let's center the main content of our page. Give main a width of 850px. Add 35px margin to the top and bottom of main and set the left and right margins to auto to center the main section. */
+main {
+  width: 850px;
+  margin: 35px auto;
+}
+
+  /* 5d4. Our card images also look like they are spaced a little too tightly. Give each img 40px margin on the top, and 8px margin on the right and left. */
+img {
+  margin: 40px 8px 0 8px;
+}
+
+/* 5b3 - Implicit */
+h1, nav a {
   color: white;
 }
 
-
-p {
-  font-family: "Droid Serif";
-  line-height: 24px;
-  font-size: 18px;
-}
-
-img {
-  margin-top: 40px;
-  margin-left: 8px;
-  margin-right: 8px;
-}
-
+/* 6a) Add a footer to the page and style the footer.
+  6a4. Apply the following styles to the footer in your style.css file:
+  Make the text uppercase.
+  Add 20px padding on the right and left sides.
+  Give it a background color of #0D2C40.
+  The text color should be white.
+  The font size should be 14px.
+  Give it a letter spacing of .08em.
+  The font weight should be 500. */
 footer {
-  text-transform: uppercase;
   padding: 0 20px;
   background-color: #0D2C40;
   color: white;
@@ -85,17 +112,35 @@ footer {
 }
 
 footer p {
+  text-transform: uppercase;
+
+  /* 6a5. Alright, now let's add some styles to the two paragraphs in the footer. We can target each paragraph in our CSS file using the class names we added in our HTML — .copyright and .message.
+    6a5a) Each paragraph should be displayed using the "Raleway" font family. */
   font-family: Raleway;
 }
 
+  /* 6a5b) Float .copyright to the left. */
 .copyright {
   float: left;
 }
 
+  /* 6a5c) Float .message to the right. */
 .message {
   float: right;
 }
 
+  /* 6a5d) If you reload the page in your browser, you'll probably notice that our footer background is all off now that we're floating the content inside! Let's fix this using the clearfix method.
+
+  Add the following code to your style.css file:
+
+  .clearfix:after {
+    visibility: hidden;
+    display: block;
+    content: " ";
+    clear: both;
+    height: 0;
+    font-size: 0;
+  } */
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -105,7 +150,37 @@ footer p {
   font-size: 0;
 }
 
+  /* 6a5e) Let's add some flair to the word GA in the footer. In your html, you'll notice that it's wrapped with a span that has the class name.
+
+  Select .name in your style.css file and give it a color of #F15B31 and a font weight of 700. */
 .name {
   color: #F15B31;
   font-weight: 700;
 }
+
+/* 6b) Style the nav bar in a way that lets users know when they are hovering over a clickable item.
+  6b2. In your style.css file, give all anchors the following style: border-bottom: 2px solid transparent; */
+/*nav a {
+  border-bottom: 2px solid transparent;
+}*/
+/*This code does not appear to be working, so I uncommented the previous code that creates what I believe to be the desired effect. (See a {4c3f - Implicit}.)*/
+
+  /* 6b1. Finally, let's add a hover effect to the anchors in the nav.
+
+  6b3a) Then add another, separate rule to style all anchors when the user hovers over them. When the user hovers over them, change the border color to white.
+  a:hover {
+    /* Your styles here *//*
+  }
+*/
+a:hover {
+  border-color: white;
+
+  /* 6b3b - Implicit */
+  text-decoration: underline;
+}
+
+
+
+
+
+

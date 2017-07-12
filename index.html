@@ -1,42 +1,113 @@
+<!-- 3a) Use a title element to give the game a unique title, which should be displayed in the browser tab.
+        3a1. In this file, set up your HTML boilerplate code. -->
 <!DOCTYPE html>
-<html>
-     <head>
-        <title>Memory Card Game</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+<!--    3a2. Add a title element so the name of the game (Memory Card Game) shows in the browser tab. -->
+    <title>Memory Card Game</title>
+
+<!-- 4c) Add an external CSS stylesheet.
+        4c2. Now let's add the Google font that we will be using for this site. In the head of your HTML file, right before the link to your CSS file, add the following code:
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:400,500,600,700" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-     </head>
+-->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Raleway:400,500,600,700" rel="stylesheet">
 
-     <body>
-        <header>
-            <h1>Memory Game</h1>
-        </header>
+<!--    4c1. Connect your css file (style.css) by using a link tag to reference it in the head of your HTML file. -->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
 
-        <nav>
-            <a href="#instructions">Instructions</a>
-            <a href="#game">Game</a>
-        </nav>
+<!-- 5a) Add structure to the HTML using semantic elements.
+        5a1. Wrap the h1 with a header element. -->
+    <header>
 
-        <main>
-            <h2 id="instructions">Instructions</h2>
-            <p>Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
+<!-- 3b) Use an h1 element to provide a heading for the game.
+        3b1. Create level one heading tags (h1) and add in the name of the game — Memory Game within those tags. -->
+      <h1>Memory Game</h1>
+    </header>
 
-            <!-- Add another subheading to describe your game. What's fun about it? Why should people play?
+<!--    5a2. Now wrap the two navigational anchors — "Instructions" and "Game" — with a nav element. -->
+    <nav>
 
-            Include some personal social media links so your users can learn about the developer behind the game - you! -->
+<!--    3b2. Add in two anchor elements — one should read Instructions and the other should read Game. For now you can just use # for the value for the href attribute like so:
+ <a href="#">Anchor Text</a> -->
+      <a href="#">Instructions</a>
+      <a href="#">Game</a>
+    </nav>
 
-            <div id="game">
-                <img src="images/back.png" alt="Queen of Diamonds">
-                <img src="images/back.png" alt="Queen of Hearts">
-                <img src="images/back.png" alt="King of Diamonds">
-                <img src="images/back.png" alt="King of Hearts">
-            </div>
-        </main>
+<!--    5a3. Finally, wrap the rest of the content — including everything from the heading that reads "Instructions" to the images of the cards — with a main element. -->
+    <main>
 
-        <footer class="clearfix">
-            <p class="copyright">Copyright 2017</p>
-            <p class="message">Created with &hearts; by <span class="name">GA</span></p>
-        </footer>
+<!-- 3c) Include a subheading titled "Instructions", and add a paragraph explaining how the Memory Card Game is played.
+        3c1. Add in level two heading tags (h2) and add the text Instructions within those tags. -->
+      <h2>Instructions</h2>
 
-        <script src="js/main.js"></script>
-     </body>
+<!--    3c2. Below your level two heading tags, type the following text in between paragraph (p) tags:
+Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. -->
+      <p>Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
+
+<!-- 4a) Create cards within your memory game.
+         Underneath your instructions and before the closing </body> tag, create four img elements with one div element wrapping them like so:
+         <div>
+           <img src="" alt="">
+           <img src="" alt="">
+           <img src="" alt="">
+           <img src="" alt="">
+         </div>
+-->
+      <div>
+
+<!-- 4b) Add color to your memory cards.
+         Now update the src and alt attributes for the images to the following:
+         <div>
+           <img src="images/back.png" alt="Queen of Diamonds">
+           <img src="images/back.png" alt="Queen of Hearts">
+           <img src="images/back.png" alt="King of Diamonds">
+           <img src="images/back.png" alt="King of Hearts">
+         </div>
+-->
+        <img src="images/back.png" alt="Queen of Diamonds">
+        <img src="images/back.png" alt="Queen of Hearts">
+        <img src="images/back.png" alt="King of Diamonds">
+        <img src="images/back.png" alt="King of Hearts">
+      </div>
+    </main>
+
+<!-- Bonus -->
+<!--    a) Add another subheading to describe your game. What's fun about it? Why should people play? -->
+    <h2>Description</h2>
+    <p>What's fun about it? Why should people play?</p>
+
+<!--    b) Include some personal social media links so your users can learn about the developer behind the game - you! -->
+    <p>Love the game? Add me on Facebook: <a href="https://www.facebook.com/Inti001">Winston Tokuhisa</a>! |&nbsp;Follow&nbsp;me&nbsp;on&nbsp;Twitter:&nbsp;<a href="https://twitter.com/Test_2_Dev">@Test_2_Dev</a>!</p>
+
+<!-- 6a) Add a footer to the page and style the footer.
+        6a1. In the index.html file, after the main element, add a footer element.
+        6a5d) Then give the footer the class clearfix in your index.html file. -->
+    <footer class = "clearfix">
+
+<!--    6a2. Add a paragraph inside the footer and give it the class copyright. Place the following content in the paragraph:
+Copyright 2017 -->
+      <p class = "copyright">Copyright 2017</p>
+
+<!--    6a3. Add a second paragraph inside the footer and give it the class message. Place the following content in the paragraph:
+Created with &hearts; by <span class="name">GA</span> -->
+      <p class = "message">Created with &hearts; by <span class="name">GA</span></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
