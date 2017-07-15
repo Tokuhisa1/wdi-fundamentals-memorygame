@@ -33,8 +33,9 @@
 
 <!--    3b2. Add in two anchor elements — one should read Instructions and the other should read Game. For now you can just use # for the value for the href attribute like so:
  <a href="#">Anchor Text</a> -->
-      <a href="#">Instructions</a>
-      <a href="#">Game</a>
+<!--  Bonus: c) Use the nav bar items to scroll down to their respected positions on the page. -->
+      <a href="#instructions">Instructions</a>
+      <a href="#game-board">Game</a>
     </nav>
 
 <!--    5a3. Finally, wrap the rest of the content — including everything from the heading that reads "Instructions" to the images of the cards — with a main element. -->
@@ -42,7 +43,7 @@
 
 <!-- 3c) Include a subheading titled "Instructions", and add a paragraph explaining how the Memory Card Game is played.
         3c1. Add in level two heading tags (h2) and add the text Instructions within those tags. -->
-      <h2>Instructions</h2>
+      <h2 id="instructions">Instructions</h2>
 
 <!--    3c2. Below your level two heading tags, type the following text in between paragraph (p) tags:
 Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. -->
@@ -57,7 +58,7 @@ Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pe
            <img src="" alt="">
          </div>
 -->
-      <div>
+<!--       <div> -->
 
 <!-- 4b) Add color to your memory cards.
          Now update the src and alt attributes for the images to the following:
@@ -68,11 +69,22 @@ Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pe
            <img src="images/back.png" alt="King of Hearts">
          </div>
 -->
-        <img src="images/back.png" alt="Queen of Diamonds">
+<!--         <img src="images/back.png" alt="Queen of Diamonds">
         <img src="images/back.png" alt="Queen of Hearts">
         <img src="images/back.png" alt="King of Diamonds">
         <img src="images/back.png" alt="King of Hearts">
-      </div>
+      </div> -->
+
+<!-- 11a) In your html file, find the following block of HTML:
+    <div class="board clearfix">
+        <img src="images/queen-of-diamonds.png" alt="Queen of Diamonds">
+        <img src="images/back.png" alt="Queen of Hearts">
+        <img src="images/king-of-diamonds.png" alt="King of Diamonds">
+        <img src="images/back.png" alt="King of Hearts">
+    </div>
+Replace that block of HTML with the following code:
+    <div id="game-board" class="board clearfix"></div> -->
+      <div id="game-board" class="board clearfix"></div>
     </main>
 
 <!-- Bonus -->

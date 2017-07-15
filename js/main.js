@@ -49,7 +49,7 @@
 // "queen" "diamonds"  "images/queen-of-diamonds.png"
 // "king"  "hearts"  "images/king-of-hearts.png"
 // "king"  "diamonds"  "images/king-of-diamonds.png"
-let cards = [
+const cards = [
   {
     rank: "queen",
     suit: "hearts",
@@ -74,7 +74,7 @@ let cards = [
 
 // 8b) Create an array cardsInPlay.
 // Set its value to an empty array []
-let cardsInPlay = [];
+const cardsInPlay = [];
 
 // Unit 9
 // 9e) Almost there! To add a little extra organization to our code, let's create a function to store the steps to check for a match.
@@ -107,7 +107,14 @@ function checkForMatch() {
 // The function should accept one parameter: cardId.
 // Move all the code that you wrote for the last unit's assignment, except for the cards and cardsInPlay arrays into the flipCard function.
 // Note: We are leaving the two arrays outside of the flipCard function since we want to make sure that the two arrays have global scope.
-function flipCard(cardId) {
+
+// 11e) In the last step we added a click event to each card, so that when each card is clicked, the flipCard function will run. Before we can test things out, we'll need to make a few edits to our flipCard function.
+  // 11e1. Remove the cardId parameter from the flip card function. We no longer want to hard-code the index number of the card that should be flipped.
+function flipCard() {
+
+  // 11e2. On the first line inside the flipCard function, use the getAttribute method to get the data-id attribute of the card that was just clicked and store it in a variable cardId.
+  // Hint: We can use the this keyword to access the card that was clicked: this.getAttribute('attribute-we-want-to-get-goes-here');
+  let cardId = this.getAttribute('data-id');
 
   // 7b) Add the line of code below to the main.js file in Sublime Text:
   //  console.log("Up and running!");
@@ -141,8 +148,8 @@ function flipCard(cardId) {
   console.log("User flipped " + cards[cardId].rank);
 
   // 10c) Now let's add a bit of new code so that we can "see" the cards that are flipped in our console. Add two console.log() statements. One should log the cardImage and the other should log the suit for the flipped card.
-  console.log("User flipped " + cards[cardId].cardImage);
-  console.log("User flipped " + cards[cardId].suit);
+  console.log(cards[cardId].cardImage);
+  console.log(cards[cardId].suit);
 
   // 8d) Now we'll want to add this first card to the cardsInPlay array.
   // Use the push() method to add cardOne to the end of the cardsInPlay array.
@@ -158,6 +165,13 @@ function flipCard(cardId) {
     // Hint: You'll want to use the rank property like we did in the last step.
   cardsInPlay.push(cards[cardId].rank);
 
+    // 11e3. Alright! Finally, when the user clicks a card we want to display the image for the face of that card in place of the back of the card. Right before the if statement where you are checking to see if two cards have been played, use the setAttribute method to update the src attribute to the image of the card that was just clicked, which is stored in the cardImage property in that card's object in the cards array.
+    // Hint #1: How can you access the cardImage property? Take a look at the line where we were logging this property to the console in the last assignment for a hint:
+    // console.log(cards[cardId].cardImage)
+    // Hint #2: Just as we did in the last step, we can use the `this` keyword to access the element the user just clicked on. Except now instead of getting an attribute, we want to _set_ the `src` attribute.
+    // Hint #3: We'll want to make sure that there are _no quotation marks_ surrounding the new value of the `src` attribute (cards[cardId].cardImage) when we use the `setAttribute()` method.
+  this.setAttribute('src', cards[cardId].cardImage);
+
   // 8i) Next we'll add logic to check to see if two cards have been played, because in our final game we will not want to check for a match until the user has selected two cards.
   // Write an if statement that checks to see if the length of the cardsInPlay array is 2.
   // For the condition, you can use the length property to find out how many items are in the cardsInPlay array and then use the === operator to see if the length is equal to 2.
@@ -168,15 +182,52 @@ function flipCard(cardId) {
   }
 }
 
+// Unit 11
+// 11b) In the main.js file in Sublime Text, add a function that will create the game board. Right after the flipCard function, add a new function createBoard. This function will not have any parameters.
+function createBoard() {
+
+  // 11c) Now add each card to the board.
+    // 11c1. Within the createBoard function, use a for loop to loop through the cards array.
+    // Here's a refresher on the syntax for a for loop:
+    //   for (var i = 0; i < arrayName.length; i++) {
+
+    //   }
+  for (let i = 0; i < cards.length; i++) {
+
+    // 11c2. Now use the createElement method to create an img element and store it in a variable cardElement.
+    // Hint: Here's what the code for creating a list item would look like, for reference:
+    // var newListItem = document.createElement('li');
+    // In our project, we'll want to create an img element instead of a li.
+    let cardElement = document.createElement('img');
+
+    // 11c3. Now use the setAttribute() method to add a src attribute for the cardElement. The src should be "images/back.png"
+    // Hint: For reference, here's the syntax for setting an attribute:
+    // cardElement.setAttribute('attributeName', 'attributeValue');
+    cardElement.setAttribute('src', "images/back.png");
+
+    // 11c4. Now use the setAttribute() method once again to set the card's 'data-id' attribute to be the index of the current element, i (no quotes).
+    // Note: data- attributes are meant to store data about an element that is not tied to a style.
+    cardElement.setAttribute('data-id', i);
+
+    // 11c5. When each card is created (still within the for loop), we'll want to use the addEventListener() method to add a click event to the cardElement. The function that we want to run when a user clicks on a card is the flipCard function.
+    cardElement.addEventListener('click', flipCard);
+
+    // 11c6. Finally, use the appendChild() method to append the current cardElement to the game board (which has an id of game-board).
+    document.getElementById('game-board').appendChild(cardElement);
+  }
+}
+
 // 9d) Now let's call the flipCard function to simulate the user flipping a card.
   // 9d1. On the line after the flipCard function, call the flipCard function, passing in 0 as an argument.
   // Note: we'll want to make sure to call the flipCard after it has already been defined, or we will get an error.
-flipCard(0);
+// flipCard(0);
 
   // 9d2. Now, on the next line, call the flipCard function again, passing in 2 as an argument.
-flipCard(2);
+// flipCard(2);
 
-
+// 11d) Now let's call the gameBoard function to create the board!
+// At the very end of your JavaScript file, after the createBoard function, call the createBoard function.
+createBoard();
 
 
 
